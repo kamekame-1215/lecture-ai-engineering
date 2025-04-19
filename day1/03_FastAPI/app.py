@@ -45,9 +45,10 @@ class Message(BaseModel):
     content: str
 
 # 直接プロンプトを使用した簡略化されたリクエスト
+# トークン数変更
 class SimpleGenerationRequest(BaseModel):
     prompt: str
-    max_new_tokens: Optional[int] = 512
+    max_new_tokens: Optional[int] = 100
     do_sample: Optional[bool] = True
     temperature: Optional[float] = 0.7
     top_p: Optional[float] = 0.9

@@ -50,13 +50,13 @@ st.write(f"こんにちは、{name}さん！")
 # age = st.slider("年齢", 0, 100, 25)
 # st.write(f"あなたの年齢: {age}")
 
-# セレクトボックス
-# st.subheader("セレクトボックス")
-# option = st.selectbox(
-#     "好きなプログラミング言語は?",
-#     ["Python", "JavaScript", "Java", "C++", "Go", "Rust"]
-# )
-# st.write(f"あなたは{option}を選びました")
+# セレクトボックス (コメントアウト解除)
+st.subheader("セレクトボックス")
+option = st.selectbox(
+    "好きなプログラミング言語は?",
+    ["Python", "JavaScript", "Java", "C++", "Go", "Rust"]
+)
+st.write(f"あなたは{option}を選びました")
 
 # ============================================
 # レイアウト

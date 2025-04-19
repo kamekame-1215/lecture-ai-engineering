@@ -13,6 +13,58 @@ from huggingface_hub import HfFolder
 # --- アプリケーション設定 ---
 st.set_page_config(page_title="Gemma Chatbot", layout="wide")
 
+# --- テーマ変更 --- 新規追加
+if 'theme' not in st.session_state:
+    st.session_state.theme = "theme-1"
+
+with st.sidebar.expander("テーマ設定", expanded=False):
+    choice = st.radio(
+        "表示テーマを選択",
+        ("theme-1", "theme-2"),
+        index=0,
+        key="theme_radio"
+    )
+    # 選択をセッションに反映
+    st.session_state.theme = choice
+
+if st.session_state.theme == "theme-2":
+    st.markdown(
+        """
+        <style>
+        /* メインコンテンツ全体 */
+        [data-testid="stAppViewContainer"] {
+            background-color: #1e1e1e !important;
+            color: #f0f0f0 !important;
+        }
+        /* サイドバー */
+        [data-testid="stSidebar"] {
+            background-color: #252526 !important;
+            color: #f0f0f0 !important;
+        }
+        /* 吹き出しやウィジェット */
+        [data-testid="stBlock"] {
+            background-color: #2e2e2e !important;
+            color: #f0f0f0 !important;
+        }
+        /* テキスト要素 */
+        .css-1d391kg, .css-10trblm, .css-18ni7ap {
+            color: #f0f0f0 !important;
+        }
+        /* 入力欄 */
+        textarea, input {
+            background-color: #333333 !important;
+            color: #f0f0f0 !important;
+        }
+        /* ボタン */
+        button, .stButton>button {
+            background-color: #3a3d41 !important;
+            color: #f0f0f0 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
 # --- 初期化処理 ---
 # NLTKデータのダウンロード（初回起動時など）
 metrics.initialize_nltk()
